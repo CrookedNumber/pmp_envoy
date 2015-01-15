@@ -1,0 +1,40 @@
+/*
+We highly recommend you use SASS and write your custom styles in sass/_custom.scss.
+However, this blank file is available if you prefer
+*/
+  
+input[type="email"],
+input[type="search"],
+input[type="text"],
+input[type="password"],
+textarea,
+select {
+  padding: 0; }
+
+#dash {
+  font-size: .9em;
+  margin-top: 1rem;}
+
+#dash form,
+#dash select,
+#dash input {
+  margin-bottom: 0;}
+  
+.krumo-root,
+.krumo,
+.krumo-name {
+  font-size: 14px;
+  font-family: "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif !important;}
+
+.krumo-root ul ul,
+.krumo-root ul ol,
+.krumo-root ol ol,
+.krumo-root ol ul {
+  font-size: 100%;} 
+
+div.krumo-expand,
+div.krumo-element {
+  background-color: #F1F1F1 !important;}
+
+ul.krumo-first {
+  background-image: none !important;}
