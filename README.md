@@ -18,7 +18,7 @@ git clone this repo
 - Get the PHP SDK and krumo
 
 ```
-cd deputy
+cd envoy
 git clone git@github.com:publicmediaplatform/phpsdk.git
 git clone git@github.com:oodle/krumo.git
 ```
@@ -30,7 +30,7 @@ cp credentials.sample.php credentials.php
 ```
 
 - Edit credentials.php, replacing `<redacted>` with your credentials
-- Edit your hosts file and apache config files accordingly, so you can pull up deputy in your browser
+- Edit your hosts file and apache config files accordingly, so you can pull up envoy in your browser
 - Browse the PMP!
 
 

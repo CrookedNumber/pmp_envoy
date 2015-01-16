@@ -34,7 +34,7 @@ $server = !empty($_SESSION['server']) ? $_SESSION['server'] : 'production';
 
 require_once 'credentials.php';
 
-require_once 'deputy.class.inc';
+require_once 'envoy.class.inc';
 
 require_once 'krumo/class.krumo.php';
 

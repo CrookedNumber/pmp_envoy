@@ -93,7 +93,7 @@ if ($redirect && !empty($_GET)) {
 <?php
 
 require_once 'credentials.php';
-require_once 'deputy.class.inc';
+require_once 'envoy.class.inc';
 require_once 'krumo/class.krumo.php';
 
 $page = (!empty($_GET['page'])) ? (int) $_GET['page'] : 1;

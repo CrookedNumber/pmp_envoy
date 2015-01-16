@@ -1,6 +1,6 @@
 <?php
 
-class deputy {
+class envoy {
 
   function __construct() {
     
