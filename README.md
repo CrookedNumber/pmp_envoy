@@ -6,6 +6,12 @@ BACKGROUND
 - More about the PMP: http://publicmediaplatform.org/
 - More about getting PMP credentials: https://support.pmp.io/docs#getting-started-user-registration
 
+FAQ
+===
+
+Q. Why is this thing in PHP?
+A. http://www.commitstrip.com/en/2015/01/12/the-right-tool-for-the-right-job/
+
 INSTALLATION
 ============
 - This assumes you already have an *AMP environment running on your local box.
