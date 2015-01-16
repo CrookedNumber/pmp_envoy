@@ -14,7 +14,7 @@ A. http://www.commitstrip.com/en/2015/01/12/the-right-tool-for-the-right-job/
 
 INSTALLATION
 ============
-- This assumes you already have an *AMP environment running on your local box.
+- This assumes you already have an apache/nginx/etc + PHP environment running on your local box.
 - Download the code
 
 ```
@@ -36,7 +36,7 @@ cp credentials.sample.php credentials.php
 ```
 
 - Edit credentials.php, replacing `<redacted>` with your credentials
-- Edit your hosts file and apache config files accordingly, so you can pull up envoy in your browser
+- Edit your hosts file and server config files accordingly, so you can pull up envoy in your browser
 - Browse the PMP!
 
 
