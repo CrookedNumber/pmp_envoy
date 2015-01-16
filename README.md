@@ -12,6 +12,9 @@ FAQ
 Q. Why is this thing in PHP?
 A. http://www.commitstrip.com/en/2015/01/12/the-right-tool-for-the-right-job/
 
+Q. Why should I use this particular PMP tool?
+A. There are lots of great tools out there. I built envoy because it was something I could easily run locally and tweak. More important, it is geared toward developers. Thus, the primary emphasis is on pouring out complicated PMP docs into an easily viewable and traversable format (via the invaluable krumo). Prettiness, alas, is sacrificed.
+
 INSTALLATION
 ============
 - This assumes you already have an apache/nginx/etc + PHP environment running on your local box.
