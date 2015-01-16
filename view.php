@@ -56,12 +56,12 @@ if (!empty($_GET['guid'])) {
       print "<{$doc->profile} src=\"{$doc->getHREF()}\"></{$doc->profile}>";
     }
   }
+  print "<h4>CollectionDocJson Object</h4>";
+  krumo($call->query->results->fullDoc);
   print "<h4>PMPDoc Object</h4>";
   krumo($doc);
   print "<h4>PMPCall Object</h4>";
   krumo($call);
-  print "<h4>CollectionDocJson Object</h4>";
-  krumo($call->query->results->fullDoc);
 }
 ?>
 </div>
