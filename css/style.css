@@ -32,6 +32,10 @@ select {
 .krumo-root ol ul {
   font-size: 100%;} 
 
+div.krumo-element {
+  border-top: #ffffff 1px solid;
+}
+
 div.krumo-expand,
 div.krumo-element {
   background-color: #F1F1F1 !important;}
