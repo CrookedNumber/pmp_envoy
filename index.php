@@ -97,14 +97,14 @@ require_once 'deputy.class.inc';
 require_once 'krumo/class.krumo.php';
 
 $page = (!empty($_GET['page'])) ? (int) $_GET['page'] : 1;
-$profile = (!empty($_GET['profile'])) ? $_GET['profile'] : '';
-$creator = (!empty($_GET['creator'])) ? $_GET['creator'] : '';
-$tag = (!empty($_GET['tag'])) ? $_GET['tag'] : '';
-$text = (!empty($_GET['text'])) ? $_GET['text'] : '';
+$profile = (!empty($_GET['profile']) && in_array($_GET['profile'], $profiles)) ? $_GET['profile'] : '';
+$creator = (!empty($_GET['creator']) && in_array($_GET['creator'], array_keys($creators))) ? $_GET['creator'] : '';
+$tag = (!empty($_GET['tag'])) ? htmlspecialchars($_GET['tag'], ENT_QUOTES, 'UTF-8') : '';
+$text = (!empty($_GET['text'])) ? htmlspecialchars($_GET['text'], ENT_QUOTES, 'UTF-8') : '';
 
 $options = array();
 $options['limit'] = 10;
-$options['profile'] = (!empty($_GET['profile'])) ? $_GET['profile'] : NULL;
+$options['profile'] = (!empty($_GET['profile']) && in_array($_GET['profile'], $profiles)) ? $_GET['profile'] : NULL;
 $options['creator'] = (!empty($_GET['creator']) && in_array($_GET['creator'], array_keys($creators))) ? $creators[$_GET['creator']] : NULL;
 $options['text'] = (!empty($_GET['text'])) ? $_GET['text'] : NULL;
 $options['tag'] = (!empty($_GET['tag'])) ? $_GET['tag'] : NULL;
