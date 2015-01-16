@@ -2,7 +2,7 @@ BACKGROUND
 ==========
 - This is a simple read-only tool to examine content in the Public Media Platform (PMP).
 - You can toggle between production and sandbox, filter your queries, or jump to a particular PMP doc (provided you know the guid).
-- DO NOT USE on a public server. In fact, I'd only recommend using it on a local server. It is some quick and dirty PHP, let me tell you.
+- DO NOT USE on a publicly available site (as it exposes permissioned content). In fact, I'd only recommend using it on a local server. It is some quick and dirty PHP, let me tell you.
 - More about the PMP: http://publicmediaplatform.org/
 - More about getting PMP credentials: https://support.pmp.io/docs#getting-started-user-registration
 
