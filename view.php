@@ -43,7 +43,10 @@ if (!empty($_GET['guid'])) {
   $options = array('guid' => $_GET['guid']);
   $call->pull($options);
   $doc = $call->query->results->docs[0];
-  print "<h2>{$doc->attributes->title} [{$doc->profile}]</h2>";
+  $title = htmlspecialchars($doc->attributes->title, ENT_QUOTES, 'UTF-8');
+  $profile = htmlspecialchars($doc->profile, ENT_QUOTES, 'UTF-8');
+
+  print "<h2>$title [$profile]</h2>";
   print "<h3>GUID: {$doc->guid}</h3>";
   if ($doc->hasEnclosure()) {
     if ($doc->profile == 'image') {
