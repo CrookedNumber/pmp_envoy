@@ -148,7 +148,7 @@ $options['tag'] = (!empty($_GET['tag'])) ? $_GET['tag'] : NULL;
 <?php
 $call = new PMPCall($creds[$server]['host'], $creds[$server]['client_id'], $creds[$server]['client_secret']);
 $call->pull($options);
-print "<div class='row'>" . krumo($call) . "</div>";
+print "<div class='row'>" . krumo($call->query->results->fullDoc) . "</div>";
 ?>
 <div class="row">
 <table><thead><tr><th>TITLE</th><th>GUID</th><!--<th>VIEW</th><th>EDIT</th><th>DELETE</th>--><th>PROFILE</th><th>CREATOR</th><th>PUBLISHED</th></tr></thead><tbody>
