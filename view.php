@@ -9,7 +9,7 @@ $server = !empty($_SESSION['server']) ? $_SESSION['server'] : 'production';
   <!-- Basic Page Needs
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   <meta charset="utf-8">
-  <title>DEPUTY</title>
+  <title>ENVOY</title>
   <meta name="description" content="">
   <meta name="author" content="">
 
