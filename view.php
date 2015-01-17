@@ -50,7 +50,7 @@ if (!empty($_GET['guid'])) {
   print "<h3>GUID: {$doc->guid}</h3>";
   if ($doc->hasEnclosure()) {
     if ($doc->profile == 'image') {
-      print "<image width=\"300\" src=\"{$doc->getHREF()}\">";
+      print "<a href=\"{$doc->getHREF()}\"><image width=\"300\" src=\"{$doc->getHREF()}\"></a>";
     }
     else if ($doc->profile == 'audio') {
       print "<audio controls src=\"{$doc->getHREF()}\"></audio>";
