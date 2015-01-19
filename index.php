@@ -37,6 +37,7 @@ $params = array(
   'text',
   'tag',
   'guid',
+  'page',
 );
 
 $new_params = array();
@@ -104,6 +105,7 @@ $text = (!empty($_GET['text'])) ? htmlspecialchars($_GET['text'], ENT_QUOTES, 'U
 
 $options = array();
 $options['limit'] = 10;
+$options['offset'] = 10 * ($page-1);
 $options['profile'] = (!empty($_GET['profile']) && in_array($_GET['profile'], $profiles)) ? $_GET['profile'] : NULL;
 $options['creator'] = (!empty($_GET['creator']) && in_array($_GET['creator'], array_keys($creators))) ? $creators[$_GET['creator']] : NULL;
 $options['text'] = (!empty($_GET['text'])) ? $_GET['text'] : NULL;
@@ -174,9 +176,21 @@ else {
 ?>
 </tbody>
 </table>
-<?php if ($pages > 1): ?>
+
+<?php
+$pages = $call->query->results->fullDoc->links->navigation[0]->totalpages;
+if ($pages > 1): ?>
   <div id ="pager">
-  
+  <?php
+  $nav_params = $new_params;
+  unset($nav_params['page']);
+  $base = '/index.php';
+  $query = '?' . http_build_query($nav_params) . '&page=';
+  if ($page > 1) print '<a class="button button-primary" href="' . $base . '">First</a>';
+  if ($page > 1) print '<a class="button button-primary" href="' . $base . $query . (int) ($page-1) . '">←PREV</a>';
+  if ($page < $pages) print '<a class="button button-primary" href="' . $base. $query . (int) ($page+1) . '"> NEXT→</a>';
+  if ($page != $pages) print '<a class="button button-primary" href="' . $base. $query . $pages . '">Last</a>';
+  ?>
   </div>
 <?php endif; ?>
 </div>

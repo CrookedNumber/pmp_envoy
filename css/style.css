@@ -42,3 +42,7 @@ div.krumo-element {
 
 ul.krumo-first {
   background-image: none !important;}
+
+#pager .button-primary {
+  margin-right: 20px;
+}
