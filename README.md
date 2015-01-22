@@ -30,7 +30,7 @@ git clone this repo
 
 ```
 cd envoy
-git clone git@github.com:publicmediaplatform/phpsdk.git
+git clone -b v0.0.1 --depth 1 git@github.com:publicmediaplatform/phpsdk.git
 git clone git@github.com:oodle/krumo.git
 ```
 
