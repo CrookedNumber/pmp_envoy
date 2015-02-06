@@ -26,7 +26,7 @@ INSTALLATION
 git clone this repo
 ```
 
-- Get the PHP SDK and krumo
+- Get the PHP SDK and krumo (**be sure to use this specific version of the SDK**; newer versions could break things)
 
 ```
 cd envoy
