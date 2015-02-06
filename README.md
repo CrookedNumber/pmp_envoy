@@ -19,7 +19,7 @@ FAQ
 
 INSTALLATION
 ============
-- This assumes you already have a PHP + some sort of server (try `PHP -S`) on your local box.
+- This assumes you already have a PHP + some sort of server (try `php -S localhost:8888`) on your local box.
 - Download the code
 
 ```
