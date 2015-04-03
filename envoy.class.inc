@@ -19,8 +19,9 @@ class PMPDoc {
     $this->attributes = clone $query_result->attributes;
     $this->links = clone $query_result->links;
     $this->guid = $this->attributes->guid;
-    $this->profile_href = $this->links->profile[0]->href; 
-    $this->profile = array_pop(explode('/', $this->profile_href));
+    $this->profile_href = $this->links->profile[0]->href;
+    $pieces = explode('/', $this->profile_href);
+    $this->profile = array_pop($pieces);
     // make this better ^^^^^^^^^^^^
   }
 
@@ -43,6 +44,7 @@ class PMPCall {
 
   function __construct($url, $client_id, $client_secret, $cache = FALSE) {
     $this->query = new stdClass();
+    $this->query->results = new stdClass();
     $this->base = $url;
     $this->errors = array();
 

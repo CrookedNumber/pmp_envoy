@@ -159,7 +159,8 @@ if (!empty($call->query->results->docs)) {
   foreach($call->query->results->docs as $doc) {
     $date = date('D, M jS Y \a\t g:i a', strtotime($doc->attributes->published));
     $creator_href = $doc->links->creator[0]->href;
-    $doc_creator = array_pop(explode('/', $creator_href));
+    $pieces = explode('/', $creator_href);
+    $doc_creator = array_pop($pieces);
     $creator_name = (in_array($doc_creator, $creators)) ? array_search($doc_creator, $creators) : '';
     print "<tr><td><a href='view.php?server={$server}&guid={$doc->guid}'>{$doc->attributes->title}</a></td><td>$doc->guid</td>";
     //print "<td><a href='view.php?server={$server}&guid={$doc->guid}'>view</a></td>";
