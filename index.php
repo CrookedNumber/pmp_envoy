@@ -76,21 +76,54 @@ if ($redirect && !empty($_GET)) {
 
   <!-- Mobile Specific Metas
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <!-- FONT
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   <!--<link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>-->
 
-  <!-- CSS
+<!-- CSS
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-  <link rel="stylesheet" href="css/normalize.css">
-  <link rel="stylesheet" href="css/skeleton.css">
-  <link rel="stylesheet" href="css/style.css">
+  <!--<link rel="stylesheet" href="css/normalize.css">-->
+  <!--<link rel="stylesheet" href="css/skeleton.css">-->
+  <!--<link rel="stylesheet" href="css/style.css">-->
+  
+  <link rel="stylesheet" href="css/pure-min.css">
+  
+<!--[if lte IE 8]>
+    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/grids-responsive-old-ie-min.css">
+<![endif]-->
+<!--[if gt IE 8]><!-->
+    <link rel="stylesheet" href="css/grids-responsive-min.css">
+<!--<![endif]-->  
+  
+  <style>
+    .pure-g > div {
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+    }
+    .l-box {
+        padding: 1em;
+    }
+    
+    /*
+When setting the primary font stack, apply it to the Pure grid units along
+with `html`, `button`, `input`, `select`, and `textarea`. Pure Grids use
+specific font stacks to ensure the greatest OS/browser compatibility.
+*/
+html, button, input, select, textarea,
+.pure-g [class *= "pure-u"] {
+    /* Set your content font stack here: */
+    font-family: Arial, Helvetica, sans-serif;
+}
+  </style>
+  
 </head>
 
 <body>
-<div class="container">
+<div id="container" class="pure-g">
+<div class="pure-u-1-1 l-box">
 <?php
 
 require_once 'credentials.php';
@@ -113,37 +146,57 @@ $options['tag'] = (!empty($_GET['tag'])) ? $_GET['tag'] : NULL;
 
 ?>
 
-<div class="row" id="dash">
-  <div class="two columns">
+<div class="pure-g">
+  <div class="pure-u-1-1 1-box">
   <form action="index.php" method="post">
-  <input class="button-primary" type="submit" name='change' value="<?php print $server; ?>" />
+  <input class="pure-button" type="submit" name='change' value="<?php print $server; ?>" />
   </form>
 </div>
 
 
-<div class="ten columns">
+<div class="pure-u-1-1 1-box">
 
-<form action="index.php" method="get">
-    <select name="profile">
-      <option value=''>Profile:</option>
+<form action="index.php" method="get" class="pure-form pure-form-stacked">
+
+    <fieldset>
+        <legend>PMP Query</legend>
+    
+    <div class="pure-g">
+    <div class="pure-u-1 pure-u-md-1-3">
+        <select name="profile" class="pure-u-23-24">
+            <option value=''>Profile:</option>
       <?php foreach($profiles as $v) {
         $selected = ($v == $profile) ? 'selected' : '';
         print "<option $selected value='$v'>$v</option>";
       } ?>
-    </select>
+        </select>
+    </div>
     
-    <select name="creator">
+    <div class="pure-u-1 pure-u-md-1-3">
+    <select name="creator" class="pure-u-23-24">
       <option value="">Creator:</option>
       <?php foreach($creators as $k => $v) {
         $selected = ($k == $creator) ? 'selected' : '';
         print "<option $selected value='$k'>$k</option>";
       } ?>
     </select>
-
-    <input name="tag" type="text" placeholder="Tag(s)" value="<?php print $tag; ?>">
-    <input name="text" type="text" placeholder="Search term(s)" value="<?php print $text; ?>">
-    <input name="guid" type="text" placeholder="Enter a PMP GUID" value="">
-    <input class="button-primary" type="submit" value="GO" />
+    </div>
+    
+    <div class="pure-u-1 pure-u-md-1-3">
+    <input name="tag" type="text" placeholder="Tag(s)" value="<?php print $tag; ?>" class="pure-u-23-24">
+    </div>
+    
+    <div class="pure-u-1 pure-u-md-1-3">
+    <input name="text" type="text" placeholder="Search term(s)" value="<?php print $text; ?>" class="pure-u-23-24">
+    </div>
+    
+    <div class="pure-u-1 pure-u-md-1-3">
+    <input name="guid" type="text" placeholder="Enter a PMP GUID" value="" class="pure-u-23-24">
+    </div>
+    
+    </div>
+    <button type="submit" class="pure-button pure-button-primary">Submit</button>
+    </fieldset>
 </form>
 </div>
 </div>
@@ -152,8 +205,8 @@ $call = new PMPCall($creds[$server]['host'], $creds[$server]['client_id'], $cred
 $call->pull($options);
 print "<div class='row'>" . krumo($call->query->results->fullDoc) . "</div>";
 ?>
-<div class="row">
-<table><thead><tr><th>TITLE</th><th>GUID</th><!--<th>VIEW</th><th>EDIT</th><th>DELETE</th>--><th>PROFILE</th><th>CREATOR</th><th>PUBLISHED</th></tr></thead><tbody>
+<div class="pure-u-1-1 1-box">
+<table class="pure-table"><thead><tr><th>TITLE</th><th>GUID</th><!--<th>VIEW</th><th>EDIT</th><th>DELETE</th>--><th>PROFILE</th><th>CREATOR</th><th>PUBLISHED</th></tr></thead><tbody>
 <?php
 if (!empty($call->query->results->docs)) {
   foreach($call->query->results->docs as $doc) {
@@ -187,13 +240,14 @@ if ($pages > 1): ?>
   unset($nav_params['page']);
   $base = '/index.php';
   $query = '?' . http_build_query($nav_params) . '&page=';
-  if ($page > 1) print '<a class="button button-primary" href="' . $base . '">First</a>';
-  if ($page > 1) print '<a class="button button-primary" href="' . $base . $query . (int) ($page-1) . '">←PREV</a>';
-  if ($page < $pages) print '<a class="button button-primary" href="' . $base. $query . (int) ($page+1) . '"> NEXT→</a>';
-  if ($page != $pages) print '<a class="button button-primary" href="' . $base. $query . $pages . '">Last</a>';
+  if ($page > 1) print '<a class="pure-button" href="' . $base . '">First</a>';
+  if ($page > 1) print '<a class="pure-button" href="' . $base . $query . (int) ($page-1) . '">←PREV</a>';
+  if ($page < $pages) print '<a class="pure-button" href="' . $base. $query . (int) ($page+1) . '"> NEXT→</a>';
+  if ($page != $pages) print '<a class="pure-button" href="' . $base. $query . $pages . '">Last</a>';
   ?>
   </div>
 <?php endif; ?>
+</div>
 </div>
 </div>
   </body>

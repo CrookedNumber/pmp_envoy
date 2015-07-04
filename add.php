@@ -49,7 +49,7 @@ if (!empty($_POST)) {
 
   <!-- Mobile Specific Metas
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <!-- FONT
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
@@ -57,35 +57,71 @@ if (!empty($_POST)) {
 
   <!-- CSS
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-  <link rel="stylesheet" href="css/normalize.css">
-  <link rel="stylesheet" href="css/skeleton.css">
-  <link rel="stylesheet" href="css/style.css">
+  <!--<link rel="stylesheet" href="css/normalize.css">-->
+  <!--<link rel="stylesheet" href="css/skeleton.css">-->
+  <!--<link rel="stylesheet" href="css/style.css">-->
+  
+  <link rel="stylesheet" href="css/pure-min.css">
+  
+  <!--[if lte IE 8]>
+    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/grids-responsive-old-ie-min.css">
+<![endif]-->
+<!--[if gt IE 8]><!-->
+    <link rel="stylesheet" href="css/grids-responsive-min.css">
+<!--<![endif]-->  
+  
+  <style>
+    .pure-g > div {
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+    }
+    .l-box {
+        padding: 1em;
+    }
+    
+    /*
+When setting the primary font stack, apply it to the Pure grid units along
+with `html`, `button`, `input`, `select`, and `textarea`. Pure Grids use
+specific font stacks to ensure the greatest OS/browser compatibility.
+*/
+html, button, input, select, textarea,
+.pure-g [class *= "pure-u"] {
+    /* Set your content font stack here: */
+    font-family: Arial, Helvetica, sans-serif;
+}
+  </style>
+  
 </head>
 
 <body>
-<div class="container">
+<div id="container" class="pure-g">
+<div class="pure-u-1-1 l-box">
 
-<div class="row" id="dash">
-  <div class="two columns">
-  <form action="add.php" method="post">
-  <input class="button-primary" type="submit" name='change' value="<?php print $server; ?>" />
+<div class="pure-g">
+  <div class="pure-u-1-1 1-box">
+  <form action="index.php" method="post">
+  <input class="pure-button" type="submit" name='change' value="<?php print $server; ?>" />
   </form>
 </div>
 </div>
 
 <?php if (isset($call->results[0])) print '<div class="row">' . krumo($call->results[0]) . '</div>'; ?>
 
-<form action="add.php" method="post">
-<div class="row">
+<form action="add.php" method="post" class="pure-form pure-form-stacked">
 
-<input class="u-full-width" name="title" type="text" placeholder="Title" value="">
+<fieldset>
+        <legend>Add a Story</legend>
 
-  <!--<label for="body">Body</label>-->
-  <textarea class="u-full-width" placeholder="Write a story" name="body"></textarea>
+  <input name="title" type="text" placeholder="Title" value="" class="pure-input-1">
 
-  <input class="button-primary" type="submit" value="Submit">
+  <textarea placeholder="Write a story" name="body" class="pure-input-1"></textarea>
+
+    <button type="submit" class="pure-button pure-button-primary">Submit</button>
+<fieldset>
 </form>
 
+</div>
 </div>
   </body>
 </html>
