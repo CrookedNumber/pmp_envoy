@@ -122,6 +122,21 @@ class PMPCall {
     }
   }
 
+  function push($data) {
+    try {
+      $doc = $this->getDocument();
+      if ($doc) {
+        $doc->setDocument($data);
+        $saved = $doc->save();
+        $this->results[] = $doc;
+        return $saved;
+      }
+    }
+    catch (Exception $e) {
+      $this->errors['push'][] = $e->getMessage();
+    }
+  }
+
   function getDocument($path = '') {
     $url = $this->base . $path;
     $cache_key = $this->cacheKey(array($url));
