@@ -274,12 +274,12 @@ if ($pages > 1): ?>
   <?php
   $nav_params = $new_params;
   unset($nav_params['page']);
-  $base = '/index.php';
-  $query = '?' . http_build_query($nav_params) . '&page=';
+  $base = '/index.php?' . http_build_query($nav_params);
+  $pager = '&page=';
   if ($page > 1) print '<a class="pure-button" href="' . $base . '">First</a>';
-  if ($page > 1) print '<a class="pure-button" href="' . $base . $query . (int) ($page-1) . '">←PREV</a>';
-  if ($page < $pages) print '<a class="pure-button" href="' . $base. $query . (int) ($page+1) . '"> NEXT→</a>';
-  if ($page != $pages) print '<a class="pure-button" href="' . $base. $query . $pages . '">Last</a>';
+  if ($page > 1) print '<a class="pure-button" href="' . $base . $pager . (int) ($page-1) . '">←PREV</a>';
+  if ($page < $pages) print '<a class="pure-button" href="' . $base. $pager . (int) ($page+1) . '"> NEXT→</a>';
+  if ($page != $pages) print '<a class="pure-button" href="' . $base. $pager . $pages . '">Last</a>';
   ?>
   </div>
 <?php endif; ?>
